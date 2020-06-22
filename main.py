@@ -31,4 +31,9 @@ def predict_home_price():
 if __name__ == "__main__":
     print("Starting Python Flask Server For Home Price Prediction...")
     util.load_saved_artifacts()
-    app.run(host='0.0.0.0', port=int(os.environ['PORT']))
+    hst = '127.0.0.1'
+    prt = 5000
+    if 'PORT' in os.environ:
+        hst = '0.0.0.0'
+        prt = os.environ['PORT']
+    app.run(host=hst, port=int(prt))
